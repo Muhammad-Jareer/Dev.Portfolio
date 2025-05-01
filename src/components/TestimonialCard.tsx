@@ -21,7 +21,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   category,
 }) => {
   return (
-    <Card className="p-6 backdrop-blur-lg bg-card/60 border-muted hover:shadow-xl transition-all duration-300 hover:scale-[1.02] hover:border-primary/30">
+    <Card className="p-6 backdrop-blur-lg bg-background border-muted hover:shadow-xl transition-all duration-300 hover:scale-[1.02] hover:border-primary/30">
       <div className="flex items-center gap-4 mb-4">
         <Avatar className="w-12 h-12 border border-muted">
           <AvatarImage src={image} alt={name} />

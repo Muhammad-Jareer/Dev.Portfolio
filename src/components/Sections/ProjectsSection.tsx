@@ -7,7 +7,7 @@ import { Button } from '../ui/button'
 function ProjectSection() {
   return (
     <>
-        <FloatingDecorativeCircle className="absolute top-24 right-10 w-64 h-64" />
+        <FloatingDecorativeCircle className="absolute top-24 right-10 w-64 h-64 border-l" />
           
           <div className="container mx-auto">
             <div className="text-center mb-16">

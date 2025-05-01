@@ -4,15 +4,17 @@ import SkillBar from '../SkillBar'
 import { Link } from 'react-router-dom'
 import { Button } from '../ui/button'
 import { Badge } from '../ui/badge'
+import { useTheme } from '@/hooks/use-theme'
 
 function SkillSection() {
+  const { theme } = useTheme()
   return (
     <>
-        <FloatingDecorativeCircle className="absolute bottom-24 left-10 w-64 h-64" />
+        <FloatingDecorativeCircle className="absolute top-24 right-10 w-64 h-64 border-b" />
           
           <div className="container mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">My Skill Set</h2>
+              <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>My Skill Set</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
                 Comprehensive overview of technical expertise and soft skills developed through years of professional experience.
               </p>
@@ -20,23 +22,22 @@ function SkillSection() {
             
             <div className="grid md:grid-cols-2 gap-16">
               <div className="space-y-10">
-                <h3 className="text-2xl font-bold mb-6">Soft Skills</h3>
+                <h3 className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>Soft Skills</h3>
                 
                 <div className="space-y-8">
                   <div className="space-y-3">
                     <div className="flex items-center gap-3">
-                      <span className="text-yellow-400">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
                           height="24"
                           viewBox="0 0 24 24"
                           fill="currentColor"
+                          color='yellow'
                         >
                           <path d="M12 2l1.8 5.8h5.9l-4.7 3.5 1.8 5.8-4.8-3.5-4.7 3.5 1.8-5.8L4 7.8h5.9L12 2z" />
                         </svg>
-                      </span>
-                      <h4 className="text-lg font-medium">Leadership</h4>
+                      <h4 className={`text-lg font-medium ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>Leadership</h4>
                     </div>
                     <p className="text-sm text-muted-foreground">Team management & project coordination</p>
                     <SkillBar value={85} color="#3498db" />
@@ -44,7 +45,6 @@ function SkillSection() {
                   
                   <div className="space-y-3">
                     <div className="flex items-center gap-3">
-                      <span className="text-pink-500">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
@@ -55,12 +55,12 @@ function SkillSection() {
                           strokeWidth="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
+                          color='pink'
                         >
                           <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z" />
                           <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" />
                         </svg>
-                      </span>
-                      <h4 className="text-lg font-medium">Communication</h4>
+                      <h4 className={`text-lg font-medium ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>Communication</h4>
                     </div>
                     <p className="text-sm text-muted-foreground">Clear & effective communication</p>
                     <SkillBar value={90} color="#e74c3c" />
@@ -68,7 +68,6 @@ function SkillSection() {
                   
                   <div className="space-y-3">
                     <div className="flex items-center gap-3">
-                      <span className="text-yellow-500">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
@@ -79,6 +78,7 @@ function SkillSection() {
                           strokeWidth="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
+                          color='yellow'
                         >
                           <path d="M12 9a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" />
                           <path d="M12 3v2" />
@@ -90,8 +90,7 @@ function SkillSection() {
                           <path d="m18.364 18.364-1.414-1.414" />
                           <path d="m5.636 5.636 1.414 1.414" />
                         </svg>
-                      </span>
-                      <h4 className="text-lg font-medium">Problem Solving</h4>
+                      <h4 className={`text-lg font-medium ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>Problem Solving</h4>
                     </div>
                     <p className="text-sm text-muted-foreground">Analytical & creative solutions</p>
                     <SkillBar value={80} color="#f1c40f" />
@@ -108,23 +107,23 @@ function SkillSection() {
               </div>
               
               <div className="space-y-10">
-                <h3 className="text-2xl font-bold mb-6">Technical Skills</h3>
+                <h3 className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>Technical Skills</h3>
                 
                 <div className="space-y-8">
                   <div>
-                    <h4 className="text-lg font-medium mb-4">Frontend Development</h4>
+                    <h4 className={`text-lg font-medium mb-4 ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>Frontend Development</h4>
                     <div className="space-y-4">
                       <div className="space-y-2">
                         <div className="flex justify-between">
-                          <span>React</span>
-                          <span>95%</span>
+                          <span className={`${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>React</span>
+                          <span className={`${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>95%</span>
                         </div>
                         <SkillBar value={95} color="#61dafb" />
                       </div>
                       <div className="space-y-2">
                         <div className="flex justify-between">
-                          <span>Vue.js</span>
-                          <span>85%</span>
+                          <span className={`${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>Vue.js</span>
+                          <span className={`${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>85%</span>
                         </div>
                         <SkillBar value={85} color="#42b883" />
                       </div>
@@ -132,19 +131,19 @@ function SkillSection() {
                   </div>
                   
                   <div>
-                    <h4 className="text-lg font-medium mb-4">Backend Development</h4>
+                    <h4 className={`text-lg font-medium mb-4 ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>Backend Development</h4>
                     <div className="space-y-4">
                       <div className="space-y-2">
                         <div className="flex justify-between">
-                          <span>Node.js</span>
-                          <span>90%</span>
+                          <span className={`${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>Node.js</span>
+                          <span className={`${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>90%</span>
                         </div>
                         <SkillBar value={90} color="#68a063" />
                       </div>
                       <div className="space-y-2">
                         <div className="flex justify-between">
-                          <span>Python</span>
-                          <span>80%</span>
+                          <span className={`${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>Python</span>
+                          <span className={`${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>80%</span>
                         </div>
                         <SkillBar value={80} color="#3572A5" />
                       </div>

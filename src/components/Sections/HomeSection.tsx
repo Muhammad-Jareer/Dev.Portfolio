@@ -11,9 +11,9 @@ function Home() {
   return (
     <>
 
-        <FloatingDecorativeCircle className="absolute top-24 left-10 w-64 h-64" />
+        <FloatingDecorativeCircle className="absolute top-24 left-10 w-64 h-64 border-r" />
         <ParticlesBackground direction="top" particleColors={["#107EAD"]} speed={3} number={15} opacity={0.4} shape='circle' />
-                  <FloatingDecorativeCircle className="absolute bottom-24 right-10 w-48 h-48" />
+                  <FloatingDecorativeCircle className="absolute bottom-24 right-10 w-48 h-48 border-t" />
                   
                   <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center">
                     <div className="flex flex-col gap-6 order-2 md:order-1">
@@ -36,7 +36,7 @@ function Home() {
                         </Button>
                         <Link to="/contact">
                           <Button variant="outline" className="px-6 hover:scale-105 transition-all">
-                            Contact Me
+                            Contact Me 
                           </Button>
                         </Link>
                       </div>

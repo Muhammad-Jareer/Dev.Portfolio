@@ -42,11 +42,11 @@ const ParticlesBackground: React.FC<ParticlesBackgroundProps> = ({
     <Particles
       id="tsparticles"
       init={particlesInit}
-      style={{ position: 'absolute', width: '100%', height: '100%' }}
+      style={{ position: "absolute", top: "0px", left: "0px", width: '100%', height: '100%' }}
       options={{
         fullScreen: {
           enable: false,
-          zIndex: -1,
+          zIndex: 0,
         },
         background: {
           color: {
