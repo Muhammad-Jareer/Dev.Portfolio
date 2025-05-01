@@ -1,73 +1,102 @@
-# Welcome to your Lovable project
+# John Anderson Portfolio
 
-## Project info
+A modern, responsive portfolio website showcasing the work of **John Anderson**, a Full Stack Developer. Built with **React**, **Vite**, **TypeScript**, and **Tailwind CSS**, this site features dark mode, animated backgrounds, and interactive skill visualizations. 
 
-**URL**: https://lovable.dev/projects/dcba97ca-3f8b-4a60-9328-781e317f077c
+> **Keywords:** Full Stack Developer portfolio, React Vite Tailwind, TypeScript portfolio, dark mode website, animated backgrounds
 
-## How can I edit this code?
+## Table of Contents
 
-There are several ways of editing your application.
+- [Demo](#demo)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Tech Stack](#tech-stack)
+- [Key Components](#key-components)
+- [SEO & Accessibility](#seo--accessibility)
+- [Contributing](#contributing)
+- [License](#license)
 
-**Use Lovable**
+## Demo
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/dcba97ca-3f8b-4a60-9328-781e317f077c) and start prompting.
+Live site: [https://your-domain.com](https://your-domain.com)
 
-Changes made via Lovable will be committed automatically to this repo.
+## Features
 
-**Use your preferred IDE**
+- **Mobile‑First Responsive Design** – Fluid layouts across all screen sizes.
+- **Dark / Light Mode Toggle** – Powered by a custom `useTheme` hook and Tailwind CSS dark variants.
+- **Animated Background** – Interactive particle effects via `react-tsparticles` and floating gradient borders.
+- **Interactive Skill Visualization** – Dynamic `SkillSection` with skill bars and progress indicators.
+- **Seamless Navigation** – Client‑side routing with React Router DOM.
+- **Performance Optimized** – Vite for instant HMR and optimized production builds.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
 
-Follow these steps:
+- **Node.js** (v14 or higher)
+- **npm** or **yarn**
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+```bash
+# Clone the repository
+git clone https://github.com/your-username/portfolio.git
+cd portfolio
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Install dependencies
+npm install     # or yarn install
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+# Start development server
+npm run dev     # or yarn dev
 ```
 
-**Edit a file directly in GitHub**
+## Usage
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- Open your browser at `http://localhost:5173`.
+- Use the theme toggle in the top-right corner to switch between light and dark modes.
+- Navigate through sections: Home, Education, Certifications, Skills, Platforms.
 
-**Use GitHub Codespaces**
+## Tech Stack
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- **Framework**: React, Vite
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS, ShadCN UI
+- **Animation**: Framer Motion, react-tsparticles
+- **Routing**: React Router DOM
+- **State Management**: React Context (e.g. `useTheme`)
 
-## What technologies are used for this project?
+## Key Components
 
-This project is built with:
+- **`ParticlesBackground`** &mdash; Configurable particle animation backdrop.
+- **`FloatingDecorativeCircle`** &mdash; Pulsing gradient‑border circles supporting dark / light themes.
+- **`SkillSection`** &mdash; Detailed skill bars and dynamic theme support.
+- **`NavigationSection`** &mdash; Interactive cards linking to portfolio sections.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## SEO & Accessibility
 
-## How can I deploy this project?
+- **Semantic HTML** – Proper use of headings (`<h1>`–`<h6>`), sections, and landmarks.
+- **Meta Tags** &mdash; Add to `<head>` for enhanced SEO and social sharing:
+  ```html
+  <!-- Basic SEO Meta Tags -->
+  <meta name="description" content="John Anderson's portfolio showcasing Full Stack Developer skills and projects, built with React, Vite, and Tailwind CSS.">
+  <meta name="keywords" content="John Anderson portfolio, full stack developer, React, Vite, Tailwind CSS, TypeScript">
+  <meta property="og:title" content="John Anderson Portfolio">
+  <meta property="og:description" content="Explore John Anderson’s projects, skills, and professional background.">
+  <meta property="og:image" content="/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  ```
+- **Accessibility** – ARIA labels for interactive elements, keyboard‑navigable, descriptive alt text for images.
 
-Simply open [Lovable](https://lovable.dev/projects/dcba97ca-3f8b-4a60-9328-781e317f077c) and click on Share -> Publish.
+## Contributing
 
-## Can I connect a custom domain to my Lovable project?
+Contributions are welcome!
 
-Yes, you can!
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature/YourFeature`.
+3. Commit your changes: `git commit -m 'Add some feature'`.
+4. Push to the branch: `git push origin feature/YourFeature`.
+5. Open a pull request.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Please review the [contribution guidelines](CONTRIBUTING.md) before submitting.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## License
+
+Distributed under the [MIT License](LICENSE).
