@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
+import { HelmetProvider } from 'react-helmet-async'; // Import HelmetProvider
 import Index from "./pages/Index";
 import Education from "./pages/Education";
 import Certifications from "./pages/Certifications";
@@ -17,9 +18,11 @@ import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
-    <Router>
-      <AppWithLocation />
-    </Router>
+    <HelmetProvider> {/* Wrap your app with HelmetProvider */}
+      <Router>
+        <AppWithLocation />
+      </Router>
+    </HelmetProvider>
   );
 };
 

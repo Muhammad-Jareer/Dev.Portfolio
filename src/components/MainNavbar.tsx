@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/use-theme";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, DownloadIcon } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -92,11 +92,15 @@ const MainNavbar = () => {
             size="icon"
             onClick={toggleTheme}
             className="hover:scale-110 transition-transform"
+            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
           >
             {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
           </Button>
 
-          <Button className="hidden md:flex">Download Resume</Button>
+          <Button className="md:flex text-white">
+            <DownloadIcon />
+            <span className="sr-only">Download Resume</span>
+          </Button>
         </div>
       </div>
     </header>

@@ -1,27 +1,22 @@
-// src/components/ContactSections.tsx
-
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import FloatingDecorativeCircle from '@/components/FloatingDecorativeCircle';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { motion, Variants, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Github, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { Github, Linkedin, Twitter, Instagram, Phone, Mail, MapPin } from 'lucide-react';
 
-// Wrap Button to use motion props like whileHover, whileTap
+// Wrap Button with framer-motion for animation
 const MotionButton = motion(Button);
 
-// Animation container variants
+// Animation containers
 const containerVariants: Variants = {
   hidden: {},
   visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
+    transition: { staggerChildren: 0.15 },
   },
 };
 
-// Animation for each item
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -39,8 +34,38 @@ const ContactSections: React.FC = () => {
     controls.start(inView ? 'visible' : 'hidden');
   }, [inView, controls]);
 
+  // For client-side validation (basic)
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const validate = () => {
+    const newErrors = { name: '', email: '', message: '' };
+    if (!formData.name.trim()) newErrors.name = 'Name is required.';
+    if (!formData.email.trim()) newErrors.email = 'Email is required.';
+    if (!formData.message.trim()) newErrors.message = 'Message is required.';
+    setErrors(newErrors);
+    return Object.values(newErrors).every(err => !err);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (validate()) {
+      // Submit logic here
+      console.log(formData);
+    }
+  };
+
   return (
-    <div className="relative py-16">
+    <div className="relative py-16" lang="en">
       <FloatingDecorativeCircle className="absolute top-24 right-10 w-64 h-64" />
       <FloatingDecorativeCircle className="absolute bottom-24 left-10 w-48 h-48" />
 
@@ -62,7 +87,12 @@ const ContactSections: React.FC = () => {
           {/* Contact Form */}
           <motion.div variants={itemVariants}>
             <Card className="p-6 sm:p-8 backdrop-blur-lg bg-card/60 border-muted hover:shadow-xl transition-shadow">
-              <form className="space-y-4 sm:space-y-6">
+              <form
+                role="form"
+                onSubmit={handleSubmit}
+                noValidate
+                className="space-y-4 sm:space-y-6"
+              >
                 {['name', 'email'].map((field) => (
                   <motion.div key={field} variants={itemVariants}>
                     <label htmlFor={field} className="block text-sm font-medium mb-1">
@@ -71,9 +101,26 @@ const ContactSections: React.FC = () => {
                     <input
                       type={field === 'email' ? 'email' : 'text'}
                       id={field}
-                      placeholder={field === 'email' ? 'you@example.com' : 'Your name'}
-                      className="w-full px-4 py-2 rounded-lg border bg-background/50 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all"
+                      name={field}
+                      aria-required="true"
+                      aria-invalid={!!errors[field]}
+                      aria-describedby={`${field}-error`}
+                      placeholder={
+                        field === 'email' ? 'you@example.com' : 'Your name'
+                      }
+                      value={formData[field as keyof typeof formData]}
+                      onChange={(e) =>
+                        setFormData({ ...formData, [field]: e.target.value })
+                      }
+                      className={`w-full px-4 py-2 rounded-lg border bg-background/50 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all ${
+                        errors[field] ? 'border-red-500' : ''
+                      }`}
                     />
+                    {errors[field] && (
+                      <p id={`${field}-error`} className="text-sm text-red-600 mt-1">
+                        {errors[field]}
+                      </p>
+                    )}
                   </motion.div>
                 ))}
 
@@ -83,15 +130,31 @@ const ContactSections: React.FC = () => {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     rows={5}
+                    aria-required="true"
+                    aria-invalid={!!errors.message}
+                    aria-describedby="message-error"
                     placeholder="Write your message here..."
-                    className="w-full px-4 py-2 rounded-lg border bg-background/50 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all"
+                    value={formData.message}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
+                    className={`w-full px-4 py-2 rounded-lg border bg-background/50 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all ${
+                      errors.message ? 'border-red-500' : ''
+                    }`}
                   />
+                  {errors.message && (
+                    <p id="message-error" className="text-sm text-red-600 mt-1">
+                      {errors.message}
+                    </p>
+                  )}
                 </motion.div>
 
                 <motion.div variants={itemVariants} className="pt-2">
                   <MotionButton
-                    className="w-full py-3"
+                    type="submit"
+                    className="w-full py-3 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 20 }}
@@ -107,9 +170,21 @@ const ContactSections: React.FC = () => {
           <motion.div variants={itemVariants}>
             <Card className="p-6 sm:p-8 backdrop-blur-lg bg-card/60 border-muted hover:shadow-xl transition-shadow">
               {[
-                { type: 'Phone', value: '(123) 456-7890', icon: <Github className="text-primary" size={20} /> },
-                { type: 'Email', value: 'contact@example.com', icon: <Twitter className="text-primary" size={20} /> },
-                { type: 'Location', value: 'San Francisco, CA', icon: <Instagram className="text-primary" size={20} /> },
+                {
+                  type: 'Phone',
+                  value: '(123) 456-7890',
+                  icon: <Phone className="text-primary" size={20} aria-hidden="true" />,
+                },
+                {
+                  type: 'Email',
+                  value: 'contact@example.com',
+                  icon: <Mail className="text-primary" size={20} aria-hidden="true" />,
+                },
+                {
+                  type: 'Location',
+                  value: 'San Francisco, CA',
+                  icon: <MapPin className="text-primary" size={20} aria-hidden="true" />,
+                },
               ].map(({ type, value, icon }) => (
                 <motion.div
                   key={type}
@@ -130,16 +205,36 @@ const ContactSections: React.FC = () => {
 
               <div className="flex gap-4">
                 {[
-                  { name: 'github', icon: <Github size={24} /> },
-                  { name: 'linkedin', icon: <Linkedin size={24} /> },
-                  { name: 'twitter', icon: <Twitter size={24} /> },
-                  { name: 'instagram', icon: <Instagram size={24} /> },
-                ].map(({ name, icon }) => (
+                  {
+                    name: 'GitHub',
+                    href: 'https://github.com/yourprofile',
+                    icon: <Github size={24} aria-hidden="true" />,
+                  },
+                  {
+                    name: 'LinkedIn',
+                    href: 'https://linkedin.com/in/yourprofile',
+                    icon: <Linkedin size={24} aria-hidden="true" />,
+                  },
+                  {
+                    name: 'Twitter',
+                    href: 'https://twitter.com/yourprofile',
+                    icon: <Twitter size={24} aria-hidden="true" />,
+                  },
+                  {
+                    name: 'Instagram',
+                    href: 'https://instagram.com/yourprofile',
+                    icon: <Instagram size={24} aria-hidden="true" />,
+                  },
+                ].map(({ name, href, icon }) => (
                   <motion.a
                     key={name}
-                    href="#"
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit our ${name} page`}
+                    title={name}
+                    className="text-muted-foreground hover:text-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md"
                     variants={itemVariants}
-                    className="text-muted-foreground hover:text-foreground"
                   >
                     {icon}
                   </motion.a>
