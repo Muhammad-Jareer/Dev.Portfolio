@@ -1,5 +1,5 @@
-
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import MainNavbar from './MainNavbar';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
@@ -19,6 +19,11 @@ const PageLayout: React.FC<PageLayoutProps> = ({
 }) => {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-background to-background/95 text-foreground">
+      <Helmet>
+        <title>{title}</title>
+        {description && <meta name="description" content={description} />}
+      </Helmet>
+
       <MainNavbar />
       
       <main className="flex-1">
