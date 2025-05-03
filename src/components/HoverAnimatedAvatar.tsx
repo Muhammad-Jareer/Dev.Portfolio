@@ -93,7 +93,7 @@ export const HoverAnimatedAvatar: React.FC<HoverAnimatedAvatarProps> = ({
                 damping: 12,
               }}
             >
-              <span className="text-[2rem] text-pink-500 drop-shadow-[0_0_10px_rgba(255,105,180,0.7)]">
+              <span className="text-[3rem] text-pink-500 drop-shadow-[0_0_10px_rgba(255,105,180,0.7)]">
                 💖
               </span>
             </motion.div>
