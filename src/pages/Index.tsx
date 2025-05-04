@@ -27,7 +27,7 @@ const Index = () => {
         </section>
         
         {/* Projects Section */}
-        <section id="projects" className="py-24 px-6 bg-muted/20 relative overflow-hidden">
+        <section id="projects" className="py-24 px-6 bg-background relative overflow-hidden">
           <ProjectSection />
         </section>
         

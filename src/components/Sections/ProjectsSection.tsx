@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import { Button } from '../ui/button';
 import { motion, Variants, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import MarqueeSection from '../Marquee';
+import { useTheme } from '@/hooks/use-theme';
 
 // Container variants for staggering children
 const containerVariants: Variants = {
@@ -57,6 +59,19 @@ const projects = [
 const ProjectSection: React.FC = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: false });
+  const { theme } = useTheme()
+
+  const companies = [
+    { name: "GitHub", icon: "devicon-github-original colored" },
+    { name: "GitLab", icon: "devicon-gitlab-original colored" },
+    { name: "Docker", icon: "devicon-docker-plain colored" },
+    { name: "Amazon Web Services", icon: "devicon-amazonwebservices-original colored" },
+    { name: "Microsoft Azure", icon: "devicon-azure-plain colored" },
+    { name: "Google Cloud", icon: "devicon-googlecloud-plain colored" },
+    { name: "DigitalOcean", icon: "devicon-digitalocean-plain colored" },
+    { name: "Heroku", icon: "devicon-heroku-plain colored" },
+  ];
+  
 
   useEffect(() => {
     if (inView) controls.start('show');
@@ -115,6 +130,8 @@ const ProjectSection: React.FC = () => {
             </Button>
           </Link>
         </motion.div>
+        
+        <MarqueeSection items={companies} theme={theme} direction={"right"} />
       </motion.div>
     </>
   );

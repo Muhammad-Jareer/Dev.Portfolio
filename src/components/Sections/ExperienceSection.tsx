@@ -27,6 +27,7 @@ const buttonVariants: Variants = {
 const ExperienceSection: React.FC = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: false });
+  
 
   useEffect(() => {
     controls.start(inView ? 'visible' : 'hidden');
@@ -59,6 +60,7 @@ const ExperienceSection: React.FC = () => {
           </Link>
         </motion.div>
       </motion.div>
+
     </>
   );
 };

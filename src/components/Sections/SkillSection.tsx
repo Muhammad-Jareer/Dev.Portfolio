@@ -9,12 +9,31 @@ import { Badge } from '../ui/badge';
 import { useTheme } from '@/hooks/use-theme';
 import { motion, Variants, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import SkillsMarquee from '../Marquee';
 
 const SkillSection: React.FC = () => {
   const { theme } = useTheme();
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: false });
 
+  const themeRevert = theme === "dark" ? "light" : "dark"
+
+  const skills = [
+    { name: "Next.js", iconImg: "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_dark_background.png" },
+    { name: "React", icon: "devicon-react-original colored" },
+    { name: "Tailwind", icon: "devicon-tailwindcss-original colored" },
+    { name: "TypeScript", icon: "devicon-typescript-plain colored" },
+    { name: "JavaScript", icon: "devicon-javascript-plain colored" },
+    { name: "MongoDB", icon: "devicon-mongodb-plain colored" },
+    { name: "Express", iconImg: "https://logowik.com/content/uploads/images/express-js1720895488.logowik.com.webp" },
+    { name: "Node.js", icon: "devicon-nodejs-plain colored" },
+    { name: "Supabase", icon: "devicon-supabase-plain colored" },
+    { name: "Appwrite", icon: "devicon-appwrite-plain colored" },
+    { name: "Firebase", icon: "devicon-firebase-plain colored" },
+    { name: "React Native", icon: "devicon-react-original colored" },
+    { name: "Redux Toolkit", icon: "devicon-redux-original colored" },
+    { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
+  ];
   // Variants
   const containerVariants: Variants = {
     hidden: {},
@@ -43,11 +62,12 @@ const SkillSection: React.FC = () => {
       >
         {/* Section Header */}
         <motion.div variants={itemVariants} className="text-center mb-16">
-          <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>My Skill Set</h2>
+          <h2 className={`text-3xl md:text-4xl font-bold ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>My Skill Set</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Comprehensive overview of technical expertise and soft skills developed through years of professional experience.
           </p>
         </motion.div>
+
 
         <div className="grid md:grid-cols-2 gap-16">
           {/* Soft Skills Column */}
@@ -154,9 +174,11 @@ const SkillSection: React.FC = () => {
                   <Badge variant="secondary" className="bg-[#D24939] text-white px-3 py-1">Jenkins</Badge>
                 </motion.div>
               </motion.div>
+              
             </motion.div>
           </motion.div>
         </div>
+        <SkillsMarquee items={skills} theme={themeRevert} direction='left' />
       </motion.div>
     </>
   );
