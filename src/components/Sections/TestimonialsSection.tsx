@@ -13,7 +13,7 @@ const testimonials = [
   {
     name: 'John Doe',
     role: 'CTO at TechCorp',
-    image: 'public/lovable-uploads/adb7561a-8e53-4eea-af78-320f8ca083b0.png',
+    image: '',
     stars: 5,
     text: 'An exceptional developer who consistently delivers high-quality work. Their attention to detail and problem-solving skills are outstanding.',
     category: 'Enterprise Project',
@@ -21,7 +21,7 @@ const testimonials = [
   {
     name: 'Sarah Smith',
     role: 'Product Manager',
-    image: 'public/lovable-uploads/d2ac0d4f-4a10-4ee9-8f3e-920c3592c2be.png',
+    image: '',
     stars: 5,
     text: 'Incredible work ethic and technical expertise. They went above and beyond to ensure our project\'s success.',
     category: 'Freelance Project',
@@ -29,7 +29,7 @@ const testimonials = [
   {
     name: 'Mike Johnson',
     role: 'Open Source Maintainer',
-    image: 'public/lovable-uploads/cca4454b-c13b-4007-a1a1-ba6315312083.png',
+    image: '',
     stars: 4,
     text: 'Their contributions to our open source project have been invaluable. Great team player with excellent communication skills.',
     category: 'Open Source Contribution',
