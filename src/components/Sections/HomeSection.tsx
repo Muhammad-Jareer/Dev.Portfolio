@@ -60,9 +60,9 @@ function Home() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="order-1 md:order-2 flex justify-center"
         >
-          <HoverAnimatedAvatar hoverImageSrc="https://i.ebayimg.com/images/g/jQQAAOSw8ExhBN2N/s-l400.jpg" hoverImageAlt="Overlay">
+          <HoverAnimatedAvatar hoverImageSrc="/lovable-uploads/touqeer2.jpg" hoverImageAlt="Overlay">
             <Avatar className="w-64 lg:w-80 h-64 lg:h-80 border-4 border-primary/20">
-              <AvatarImage src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTj5CCclt9z38PpMbRnqFflmHpiMkbSJwMdaC9vFxsIWqVjQnJf" alt="John Anderson" />
+              <AvatarImage src="/lovable-uploads/jareer.jpg" alt="John Anderson" />
               <AvatarFallback>JA</AvatarFallback>
             </Avatar>
           </HoverAnimatedAvatar>
