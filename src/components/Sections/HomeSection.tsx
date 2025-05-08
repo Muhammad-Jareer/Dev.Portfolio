@@ -60,9 +60,9 @@ function Home() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="order-1 md:order-2 flex justify-center"
         >
-          <HoverAnimatedAvatar hoverImageSrc="/lovable-uploads/touqeer2.webp" hoverImageAlt="Overlay">
+          <HoverAnimatedAvatar hoverImageSrc="/lovable-uploads/touqeer1.avif" hoverImageAlt="Overlay">
             <Avatar className="w-64 lg:w-80 h-64 lg:h-80 border-4 border-primary/20">
-              <AvatarImage src="/lovable-uploads/jareer.webp" alt="John Anderson" fetchPriority='high' />
+              <AvatarImage src="/lovable-uploads/jareer1.avif" alt="John Anderson" fetchPriority='high' className='object-cover' />
               <AvatarFallback>JA</AvatarFallback>
             </Avatar>
           </HoverAnimatedAvatar>
