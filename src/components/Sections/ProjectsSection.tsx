@@ -32,7 +32,7 @@ const cardVariants: Variants = {
 const projects = [
   {
     title: "Analytics Dashboard",
-    image: "/lovable-uploads/project1.jpeg",
+    image: "/lovable-uploads/project1.webp",
     description:
       "Real-time data visualization platform with customizable widgets and interactive charts.",
     tags: ["React", "Node.js", "GraphQL"],
@@ -40,7 +40,7 @@ const projects = [
   },
   {
     title: "Fitness Tracker",
-    image: "/lovable-uploads/project2.jpeg",
+    image: "/lovable-uploads/project2.webp",
     description:
       "Mobile app for tracking workouts, nutrition, and personal fitness goals with AI recommendations.",
     tags: ["Flutter", "Firebase", "TensorFlow"],
@@ -48,7 +48,7 @@ const projects = [
   },
   {
     title: "E-Commerce Platform",
-    image: "/lovable-uploads/project3.jpeg",
+    image: "/lovable-uploads/project3.webp",
     description:
       "Modern e-commerce solution with real-time inventory, AI-powered recommendations, and seamless checkout.",
     tags: ["Next.js", "Stripe", "AWS"],
