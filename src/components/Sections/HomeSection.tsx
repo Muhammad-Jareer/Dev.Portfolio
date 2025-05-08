@@ -18,7 +18,10 @@ function Home() {
 
   return (
     <>
-      <FloatingDecorativeCircle className="absolute top-24 left-10 w-64 h-64 border-r" />
+      {!isSmallDevice && (
+        <FloatingDecorativeCircle className="absolute bottom-24 right-10 w-48 h-48 border-t" />
+      )}
+      
       {!isSmallDevice && (
         <ParticlesBackground 
           direction="top" 
@@ -29,7 +32,10 @@ function Home() {
           shape='circle' 
         />
       )}
-      <FloatingDecorativeCircle className="absolute bottom-24 right-10 w-48 h-48 border-t" />
+      
+      {!isSmallDevice && (
+        <FloatingDecorativeCircle className="absolute bottom-24 right-10 w-48 h-48 border-t" />
+      )}
       
       <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center">
         <motion.div
