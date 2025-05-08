@@ -8,18 +8,30 @@ import ProfileStats from '../ProfileStats'
 import ParticlesBackground from '../ParticlesBackground'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { useMediaQuery } from 'react-responsive'
 
 function Home() {
   const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.2 });
+  
+  // Check if the screen width is less than 768px (small devices)
+  const isSmallDevice = useMediaQuery({ query: '(max-width: 768px)' });
 
   return (
     <>
       <FloatingDecorativeCircle className="absolute top-24 left-10 w-64 h-64 border-r" />
-      <ParticlesBackground direction="top" particleColors={["#107EAD"]} speed={3} number={15} opacity={0.4} shape='circle' />
+      {!isSmallDevice && (
+        <ParticlesBackground 
+          direction="top" 
+          particleColors={["#107EAD"]} 
+          speed={3} 
+          number={15} 
+          opacity={0.4} 
+          shape='circle' 
+        />
+      )}
       <FloatingDecorativeCircle className="absolute bottom-24 right-10 w-48 h-48 border-t" />
       
       <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center">
-        
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -50,8 +62,6 @@ function Home() {
               </Button>
             </Link>
           </div>
-
-          {/* Socials can be wrapped in motion.div for fade-in or stagger */}
         </motion.div>
 
         <motion.div
