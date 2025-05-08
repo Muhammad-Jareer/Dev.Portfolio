@@ -32,7 +32,7 @@ const cardVariants: Variants = {
 const projects = [
   {
     title: "Analytics Dashboard",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "/lovable-uploads/project1.jpeg",
     description:
       "Real-time data visualization platform with customizable widgets and interactive charts.",
     tags: ["React", "Node.js", "GraphQL"],
@@ -40,7 +40,7 @@ const projects = [
   },
   {
     title: "Fitness Tracker",
-    image: "https://i.pinimg.com/736x/84/5a/03/845a038b386aac291435d4de36afe018.jpg",
+    image: "/lovable-uploads/project2.jpeg",
     description:
       "Mobile app for tracking workouts, nutrition, and personal fitness goals with AI recommendations.",
     tags: ["Flutter", "Firebase", "TensorFlow"],
@@ -48,7 +48,7 @@ const projects = [
   },
   {
     title: "E-Commerce Platform",
-    image: "https://i.pinimg.com/736x/54/e3/c0/54e3c0564bd1b64c82c5a482d6895d4c.jpg",
+    image: "/lovable-uploads/project3.jpeg",
     description:
       "Modern e-commerce solution with real-time inventory, AI-powered recommendations, and seamless checkout.",
     tags: ["Next.js", "Stripe", "AWS"],
