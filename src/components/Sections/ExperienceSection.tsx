@@ -5,6 +5,7 @@ import { Button } from '../ui/button';
 import FloatingDecorativeCircle from '../FloatingDecorativeCircle';
 import { motion, Variants, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useMediaQuery } from 'react-responsive';
 
 // Stagger container
 const containerVariants: Variants = {
@@ -27,6 +28,7 @@ const buttonVariants: Variants = {
 const ExperienceSection: React.FC = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: false });
+  const isSmallDevice = useMediaQuery({ query: '(max-width: 768px)' });
   
 
   useEffect(() => {
@@ -35,8 +37,12 @@ const ExperienceSection: React.FC = () => {
 
   return (
     <>
-      <FloatingDecorativeCircle className="absolute top-24 left-10 w-48 h-48" />
-      <FloatingDecorativeCircle className="absolute bottom-24 right-10 w-32 h-32" />
+    {isSmallDevice && (
+      <>
+        <FloatingDecorativeCircle className="absolute bottom-24 right-10 w-32 h-32" />
+        <FloatingDecorativeCircle className="absolute top-24 left-10 w-48 h-48" />
+      </>
+    )}
 
       <motion.div
         ref={ref}

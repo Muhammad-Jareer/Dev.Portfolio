@@ -12,6 +12,7 @@ import { useInView } from 'react-intersection-observer';
 import SkillsMarquee from '../Marquee';
 import { DiReact, DiNodejs, DiJavascript1, DiMongodb, DiPostgresql } from "react-icons/di";
 import { SiTailwindcss, SiTypescript, SiRedux, SiFirebase, SiExpress, SiSupabase, SiAppwrite, SiNextdotjs } from "react-icons/si";
+import { useMediaQuery } from 'react-responsive';
 
 // === Config Arrays ===
 
@@ -64,6 +65,7 @@ const SkillSection: React.FC = () => {
   const { theme } = useTheme();
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: false });
+  const isSmallDevice = useMediaQuery({ query: '(max-width: 768px)' });
 
   const themeRevert = theme === "dark" ? "light" : "dark";
 
@@ -83,7 +85,9 @@ const SkillSection: React.FC = () => {
 
   return (
     <>
+    {isSmallDevice && (
       <FloatingDecorativeCircle className="absolute top-24 right-10 w-64 h-64 border-b" />
+    )}
 
       <motion.div
         ref={ref}

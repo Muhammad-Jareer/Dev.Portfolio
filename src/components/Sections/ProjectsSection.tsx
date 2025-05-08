@@ -1,5 +1,3 @@
-// src/components/ProjectSection.tsx
-
 import React, { useEffect } from 'react';
 import FloatingDecorativeCircle from '../FloatingDecorativeCircle';
 import ProjectCard from '../ProjectCard';
@@ -10,6 +8,7 @@ import { useInView } from 'react-intersection-observer';
 import MarqueeSection from '../Marquee';
 import { useTheme } from '@/hooks/use-theme';
 import { SiGithub, SiGitlab, SiDocker, SiAmazon, SiGoogle, SiGooglecloud, SiDigitalocean, SiHeroku} from "react-icons/si";
+import { useMediaQuery } from 'react-responsive';
 
 // Container variants for staggering children
 const containerVariants: Variants = {
@@ -61,6 +60,7 @@ const ProjectSection: React.FC = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: false });
   const { theme } = useTheme()
+  const isSmallDevice = useMediaQuery({ query: '(max-width: 768px)' });
 
   const companies = [
     { name: "GitHub", icon: <SiGithub /> },
@@ -81,7 +81,9 @@ const ProjectSection: React.FC = () => {
 
   return (
     <>
-      <FloatingDecorativeCircle className="absolute top-24 right-10 w-64 h-64 border-l" />
+    {!isSmallDevice && (
+        <FloatingDecorativeCircle className="absolute top-24 right-10 w-64 h-64 border-l" />
+    )}
 
       <motion.div
         ref={ref}

@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { motion, Variants, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FiGithub, FiLinkedin, FiTwitter, FiInstagram, FiPhone, FiMail, FiMapPin } from "react-icons/fi";
+import { useMediaQuery } from 'react-responsive';
 
 // Wrap Button with framer-motion for animation
 const MotionButton = motion(Button);
@@ -70,6 +71,7 @@ const socialLinks = [
 const ContactSections: React.FC = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.2 });
+  const isSmallDevice = useMediaQuery({ query: '(max-width: 768px)' });
 
   useEffect(() => {
     controls.start(inView ? 'visible' : 'hidden');
@@ -107,8 +109,12 @@ const ContactSections: React.FC = () => {
 
   return (
     <div className="relative py-16" lang="en">
-      <FloatingDecorativeCircle className="absolute top-24 right-10 w-64 h-64" />
-      <FloatingDecorativeCircle className="absolute bottom-24 left-10 w-48 h-48" />
+      {!isSmallDevice && (
+       <>
+        <FloatingDecorativeCircle className="absolute top-24 right-10 w-64 h-64" />
+        <FloatingDecorativeCircle className="absolute bottom-24 left-10 w-48 h-48" />
+       </>
+      )}
 
       <motion.div
         ref={ref}

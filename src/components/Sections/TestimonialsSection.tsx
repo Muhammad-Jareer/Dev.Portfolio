@@ -8,7 +8,7 @@ import { Button } from '../ui/button';
 import { useTheme } from '@/hooks/use-theme';
 import { motion, Variants, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaUser } from "react-icons/fa";
+import { useMediaQuery } from 'react-responsive';
 
 const testimonials = [
   {
@@ -59,6 +59,7 @@ const TestimonialsSection: React.FC = () => {
   const { theme } = useTheme();
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: false });
+  const isSmallDevice = useMediaQuery({ query: '(max-width: 768px)' });
 
   useEffect(() => {
     controls.start(inView ? 'visible' : 'hidden');
@@ -66,7 +67,9 @@ const TestimonialsSection: React.FC = () => {
 
   return (
     <>
+    {!isSmallDevice && (
       <FloatingDecorativeCircle className="absolute bottom-24 right-10 w-64 h-64" />
+    )}
 
       <motion.div
         ref={ref}
