@@ -1,4 +1,3 @@
-import React from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -6,6 +5,7 @@ import FloatingDecorativeCircle from '@/components/FloatingDecorativeCircle';
 import AnimatedPage from '@/components/AnimatedPage';
 import AnimatedSection from '@/components/AnimatedSection';
 import { motion } from 'framer-motion';
+import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 const Contact = () => {
   const inputVariants = {
@@ -35,10 +35,10 @@ const Contact = () => {
   };
 
   const socialIcons = [
-    { name: 'GitHub', icon: 'github' },
-    { name: 'LinkedIn', icon: 'linkedin' },
-    { name: 'Twitter', icon: 'twitter' },
-    { name: 'Instagram', icon: 'instagram' }
+    { name: 'GitHub', icon: <FaGithub /> },
+    { name: 'LinkedIn', icon: <FaLinkedin /> },
+    { name: 'Twitter', icon: <FaTwitter /> },
+    { name: 'Instagram', icon: <FaInstagram /> }
   ];
 
   return (
@@ -264,25 +264,25 @@ const Contact = () => {
                   custom={4}
                 >
                   <h4 className="text-sm font-medium mb-4">Connect on Social Media</h4>
-                  <div className="flex gap-4">
+                  <div className="flex gap-4 items-center">
                     {socialIcons.map((social, index) => (
                       <motion.a
                         key={social.name}
                         href="#"
                         aria-label={`Visit our ${social.name}`}
-                        className="text-muted-foreground hover:text-foreground transition-colors"
+                        className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2"
                         whileHover={{ y: -5, scale: 1.2 }}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.8 + index * 0.1 }}
                       >
-                        <span className="sr-only">{social.name}</span>
-                        {/* You may replace with <Icon /> component if used */}
-                        <span>{social.icon}</span>
+                        {social.icon}
+                        <span className="ml-2">{social.name}</span> {/* Adding the name next to the icon */}
                       </motion.a>
                     ))}
                   </div>
                 </motion.div>
+
               </div>
             </Card>
           </AnimatedSection>

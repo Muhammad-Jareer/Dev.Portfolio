@@ -8,6 +8,7 @@ import { Button } from '../ui/button';
 import { useTheme } from '@/hooks/use-theme';
 import { motion, Variants, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { FaUser } from "react-icons/fa";
 
 const testimonials = [
   {

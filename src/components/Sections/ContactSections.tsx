@@ -4,7 +4,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { motion, Variants, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Github, Linkedin, Twitter, Instagram, Phone, Mail, MapPin } from 'lucide-react';
+import { FiGithub, FiLinkedin, FiTwitter, FiInstagram, FiPhone, FiMail, FiMapPin } from "react-icons/fi";
 
 // Wrap Button with framer-motion for animation
 const MotionButton = motion(Button);
@@ -25,6 +25,47 @@ const itemVariants: Variants = {
     transition: { duration: 0.5, ease: 'easeOut' },
   },
 };
+
+const contactDetails = [
+  {
+    type: 'Phone',
+    value: '(123) 456-7890',
+    icon: <FiPhone className="text-primary" size={20} aria-hidden="true" />,
+  },
+  {
+    type: 'Email',
+    value: 'contact@example.com',
+    icon: <FiMail className="text-primary" size={20} aria-hidden="true" />,
+  },
+  {
+    type: 'Location',
+    value: 'San Francisco, CA',
+    icon: <FiMapPin className="text-primary" size={20} aria-hidden="true" />,
+  },
+];
+
+const socialLinks = [
+  {
+    name: 'GitHub',
+    href: 'https://github.com/yourprofile',
+    icon: <FiGithub size={24} aria-hidden="true" />,
+  },
+  {
+    name: 'LinkedIn',
+    href: 'https://linkedin.com/in/yourprofile',
+    icon: <FiLinkedin size={24} aria-hidden="true" />,
+  },
+  {
+    name: 'Twitter',
+    href: 'https://twitter.com/yourprofile',
+    icon: <FiTwitter size={24} aria-hidden="true" />,
+  },
+  {
+    name: 'Instagram',
+    href: 'https://instagram.com/yourprofile',
+    icon: <FiInstagram size={24} aria-hidden="true" />,
+  },
+];
 
 const ContactSections: React.FC = () => {
   const controls = useAnimation();
@@ -169,23 +210,7 @@ const ContactSections: React.FC = () => {
           {/* Contact Information */}
           <motion.div variants={itemVariants}>
             <Card className="p-6 sm:p-8 backdrop-blur-lg bg-card/60 border-muted hover:shadow-xl transition-shadow">
-              {[
-                {
-                  type: 'Phone',
-                  value: '(123) 456-7890',
-                  icon: <Phone className="text-primary" size={20} aria-hidden="true" />,
-                },
-                {
-                  type: 'Email',
-                  value: 'contact@example.com',
-                  icon: <Mail className="text-primary" size={20} aria-hidden="true" />,
-                },
-                {
-                  type: 'Location',
-                  value: 'San Francisco, CA',
-                  icon: <MapPin className="text-primary" size={20} aria-hidden="true" />,
-                },
-              ].map(({ type, value, icon }) => (
+              {contactDetails.map(({ type, value, icon }) => (
                 <motion.div
                   key={type}
                   variants={itemVariants}
@@ -204,28 +229,7 @@ const ContactSections: React.FC = () => {
               </motion.h3>
 
               <div className="flex gap-4">
-                {[
-                  {
-                    name: 'GitHub',
-                    href: 'https://github.com/yourprofile',
-                    icon: <Github size={24} aria-hidden="true" />,
-                  },
-                  {
-                    name: 'LinkedIn',
-                    href: 'https://linkedin.com/in/yourprofile',
-                    icon: <Linkedin size={24} aria-hidden="true" />,
-                  },
-                  {
-                    name: 'Twitter',
-                    href: 'https://twitter.com/yourprofile',
-                    icon: <Twitter size={24} aria-hidden="true" />,
-                  },
-                  {
-                    name: 'Instagram',
-                    href: 'https://instagram.com/yourprofile',
-                    icon: <Instagram size={24} aria-hidden="true" />,
-                  },
-                ].map(({ name, href, icon }) => (
+                {socialLinks.map(({ name, href, icon }) => (
                   <motion.a
                     key={name}
                     href={href}

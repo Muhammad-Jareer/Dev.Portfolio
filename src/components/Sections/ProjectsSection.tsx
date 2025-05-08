@@ -9,6 +9,7 @@ import { motion, Variants, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import MarqueeSection from '../Marquee';
 import { useTheme } from '@/hooks/use-theme';
+import { SiGithub, SiGitlab, SiDocker, SiAmazon, SiGoogle, SiGooglecloud, SiDigitalocean, SiHeroku} from "react-icons/si";
 
 // Container variants for staggering children
 const containerVariants: Variants = {
@@ -62,14 +63,14 @@ const ProjectSection: React.FC = () => {
   const { theme } = useTheme()
 
   const companies = [
-    { name: "GitHub", icon: "devicon-github-original colored" },
-    { name: "GitLab", icon: "devicon-gitlab-original colored" },
-    { name: "Docker", icon: "devicon-docker-plain colored" },
-    { name: "Amazon Web Services", icon: "devicon-amazonwebservices-original colored" },
-    { name: "Microsoft Azure", icon: "devicon-azure-plain colored" },
-    { name: "Google Cloud", icon: "devicon-googlecloud-plain colored" },
-    { name: "DigitalOcean", icon: "devicon-digitalocean-plain colored" },
-    { name: "Heroku", icon: "devicon-heroku-plain colored" },
+    { name: "GitHub", icon: <SiGithub /> },
+    { name: "GitLab", icon: <SiGitlab /> },
+    { name: "Docker", icon: <SiDocker /> },
+    { name: "Amazon Web Services", icon: <SiAmazon /> },
+    { name: "Microsoft Azure", icon: <SiGoogle /> },
+    { name: "Google Cloud", icon: <SiGooglecloud /> },
+    { name: "DigitalOcean", icon: <SiDigitalocean /> },
+    { name: "Heroku", icon: <SiHeroku /> },
   ];
   
 

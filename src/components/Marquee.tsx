@@ -1,16 +1,16 @@
 // components/MarqueeSection.tsx
 import Marquee from "react-fast-marquee";
+import { ReactElement } from "react";
 
 type Item = {
   name: string;
-  icon?: string;
-  iconImg?: string;
+  icon?: ReactElement;
 };
 
 interface MarqueeSectionProps {
   items: Item[];
   theme: "light" | "dark";
-  direction: "right" | "left"
+  direction: "right" | "left";
 }
 
 export default function MarqueeSection({ items, theme, direction }: MarqueeSectionProps) {
@@ -23,10 +23,10 @@ export default function MarqueeSection({ items, theme, direction }: MarqueeSecti
     >
       {items.map((item) => (
         <div key={item.name} className="flex items-center gap-2 mx-2 md:mx-6 mt-16">
-          {item.icon ? (
-            <i className={`${item.icon} text-3xl`}></i>
-          ) : (
-            <img src={item.iconImg} alt={item.name} className="w-7 h-7" />
+          {item.icon && (
+            <span className="text-3xl text-primary">
+              {item.icon}
+            </span>
           )}
           <span
             className={`text-lg font-medium ${

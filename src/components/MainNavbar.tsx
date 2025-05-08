@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/use-theme";
-import { Sun, Moon, DownloadIcon } from "lucide-react";
+import { FaSun, FaMoon, FaDownload } from 'react-icons/fa';
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -94,11 +95,11 @@ const MainNavbar = () => {
             className="hover:scale-110 transition-transform"
             aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
           >
-            {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+            {theme === "dark" ? <FaSun size={20} /> : <FaMoon size={20} />}
           </Button>
 
           <Button className="md:flex text-white">
-            <DownloadIcon />
+            <FaDownload />
             <span className="sr-only">Download Resume</span>
           </Button>
         </div>

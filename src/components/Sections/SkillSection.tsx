@@ -10,31 +10,63 @@ import { useTheme } from '@/hooks/use-theme';
 import { motion, Variants, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import SkillsMarquee from '../Marquee';
+import { DiReact, DiNodejs, DiJavascript1, DiMongodb, DiPostgresql } from "react-icons/di";
+import { SiTailwindcss, SiTypescript, SiRedux, SiFirebase, SiExpress, SiSupabase, SiAppwrite, SiNextdotjs } from "react-icons/si";
+
+// === Config Arrays ===
+
+// Skills Marquee
+const skills = [
+  { name: "Next.js", icon: <SiNextdotjs /> },
+  { name: "React", icon: <DiReact /> },
+  { name: "Tailwind", icon: <SiTailwindcss /> },
+  { name: "TypeScript", icon: <SiTypescript /> },
+  { name: "JavaScript", icon: <DiJavascript1 /> },
+  { name: "MongoDB", icon: <DiMongodb /> },
+  { name: "Express", icon: <SiExpress /> },
+  { name: "Node.js", icon: <DiNodejs /> },
+  { name: "Supabase", icon: <SiSupabase /> },
+  { name: "Appwrite", icon: <SiAppwrite /> },
+  { name: "Firebase", icon: <SiFirebase /> },
+  { name: "Redux Toolkit", icon: <SiRedux /> },
+  { name: "PostgreSQL", icon: <DiPostgresql /> },
+];
+
+// Soft Skills
+const softSkills = [
+  { name: "Leadership", description: "Team management & project coordination", value: 85, color: "#3498db" },
+  { name: "Communication", description: "Clear & effective communication", value: 90, color: "#e74c3c" },
+  { name: "Problem Solving", description: "Analytical & creative solutions", value: 80, color: "#f1c40f" },
+];
+
+// Technical Skills
+const frontendSkills = [
+  { name: "React", value: 95, color: "#61dafb" },
+  { name: "Vue.js", value: 85, color: "#42b883" },
+];
+
+const backendSkills = [
+  { name: "Node.js", value: 90, color: "#68a063" },
+  { name: "Python", value: 80, color: "#3572A5" },
+];
+
+const toolsTechnologies = [
+  { name: "Git", bgColor: "#333", textColor: "white" },
+  { name: "Docker", bgColor: "#2496ED", textColor: "white" },
+  { name: "AWS", bgColor: "#FF9900", textColor: "white" },
+  { name: "Kubernetes", bgColor: "#326CE5", textColor: "white" },
+  { name: "Jenkins", bgColor: "#D24939", textColor: "white" },
+];
+
+// === Component ===
 
 const SkillSection: React.FC = () => {
   const { theme } = useTheme();
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: false });
 
-  const themeRevert = theme === "dark" ? "light" : "dark"
+  const themeRevert = theme === "dark" ? "light" : "dark";
 
-  const skills = [
-    { name: "Next.js", iconImg: "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_dark_background.png" },
-    { name: "React", icon: "devicon-react-original colored" },
-    { name: "Tailwind", icon: "devicon-tailwindcss-original colored" },
-    { name: "TypeScript", icon: "devicon-typescript-plain colored" },
-    { name: "JavaScript", icon: "devicon-javascript-plain colored" },
-    { name: "MongoDB", icon: "devicon-mongodb-plain colored" },
-    { name: "Express", iconImg: "https://logowik.com/content/uploads/images/express-js1720895488.logowik.com.webp" },
-    { name: "Node.js", icon: "devicon-nodejs-plain colored" },
-    { name: "Supabase", icon: "devicon-supabase-plain colored" },
-    { name: "Appwrite", icon: "devicon-appwrite-plain colored" },
-    { name: "Firebase", icon: "devicon-firebase-plain colored" },
-    { name: "React Native", icon: "devicon-react-original colored" },
-    { name: "Redux Toolkit", icon: "devicon-redux-original colored" },
-    { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
-  ];
-  // Variants
   const containerVariants: Variants = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.15 } },
@@ -60,53 +92,34 @@ const SkillSection: React.FC = () => {
         initial="hidden"
         animate={controls}
       >
-        {/* Section Header */}
         <motion.div variants={itemVariants} className="text-center mb-16">
-          <h2 className={`text-3xl md:text-4xl font-bold ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>My Skill Set</h2>
+          <h2 className={`text-3xl md:text-4xl font-bold ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>
+            My Skill Set
+          </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Comprehensive overview of technical expertise and soft skills developed through years of professional experience.
           </p>
         </motion.div>
 
-
         <div className="grid md:grid-cols-2 gap-16">
           {/* Soft Skills Column */}
           <motion.div variants={containerVariants} className="space-y-10">
-            <motion.h3 variants={itemVariants} className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>Soft Skills</motion.h3>
+            <motion.h3 variants={itemVariants} className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>
+              Soft Skills
+            </motion.h3>
 
             <motion.div variants={containerVariants} className="space-y-8">
-              {/* Leadership */}
-              <motion.div variants={itemVariants} className="space-y-3">
-                <div className="flex items-center gap-3">
-                  {/* Icon omitted for brevity */}
-                  <h4 className={`text-lg font-medium ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>Leadership</h4>
-                </div>
-                <p className="text-sm text-muted-foreground">Team management & project coordination</p>
-                <SkillBar value={85} color="#3498db" />
-              </motion.div>
-
-              {/* Communication */}
-              <motion.div variants={itemVariants} className="space-y-3">
-                <div className="flex items-center gap-3">
-                  {/* Icon omitted for brevity */}
-                  <h4 className={`text-lg font-medium ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>Communication</h4>
-                </div>
-                <p className="text-sm text-muted-foreground">Clear & effective communication</p>
-                <SkillBar value={90} color="#e74c3c" />
-              </motion.div>
-
-              {/* Problem Solving */}
-              <motion.div variants={itemVariants} className="space-y-3">
-                <div className="flex items-center gap-3">
-                  {/* Icon omitted for brevity */}
-                  <h4 className={`text-lg font-medium ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>Problem Solving</h4>
-                </div>
-                <p className="text-sm text-muted-foreground">Analytical & creative solutions</p>
-                <SkillBar value={80} color="#f1c40f" />
-              </motion.div>
+              {softSkills.map(skill => (
+                <motion.div key={skill.name} variants={itemVariants} className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <h4 className={`text-lg font-medium ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>{skill.name}</h4>
+                  </div>
+                  <p className="text-sm text-muted-foreground">{skill.description}</p>
+                  <SkillBar value={skill.value} color={skill.color} />
+                </motion.div>
+              ))}
             </motion.div>
 
-            {/* Soft Skills Button */}
             <motion.div variants={itemVariants} className="text-center mt-8">
               <Link to="/skills">
                 <Button variant="outline" className="hover:scale-105 transition-all">
@@ -118,48 +131,40 @@ const SkillSection: React.FC = () => {
 
           {/* Technical Skills Column */}
           <motion.div variants={containerVariants} className="space-y-10">
-            <motion.h3 variants={itemVariants} className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>Technical Skills</motion.h3>
+            <motion.h3 variants={itemVariants} className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>
+              Technical Skills
+            </motion.h3>
 
             <motion.div variants={containerVariants} className="space-y-8">
-              {/* Frontend Development */}
+              {/* Frontend */}
               <motion.div variants={itemVariants}>
                 <h4 className={`text-lg font-medium mb-4 ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>Frontend Development</h4>
                 <div className="space-y-4">
-                  <motion.div variants={itemVariants} className="space-y-2">
-                    <div className="flex justify-between">
-                      <span className={`${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>React</span>
-                      <span className={`${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>95%</span>
-                    </div>
-                    <SkillBar value={95} color="#61dafb" />
-                  </motion.div>
-                  <motion.div variants={itemVariants} className="space-y-2">
-                    <div className="flex justify-between">
-                      <span className={`${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>Vue.js</span>
-                      <span className={`${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>85%</span>
-                    </div>
-                    <SkillBar value={85} color="#42b883" />
-                  </motion.div>
+                  {frontendSkills.map(skill => (
+                    <motion.div key={skill.name} variants={itemVariants} className="space-y-2">
+                      <div className="flex justify-between">
+                        <span className={`${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>{skill.name}</span>
+                        <span className={`${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>{skill.value}%</span>
+                      </div>
+                      <SkillBar value={skill.value} color={skill.color} />
+                    </motion.div>
+                  ))}
                 </div>
               </motion.div>
 
-              {/* Backend Development */}
+              {/* Backend */}
               <motion.div variants={itemVariants}>
                 <h4 className={`text-lg font-medium mb-4 ${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>Backend Development</h4>
                 <div className="space-y-4">
-                  <motion.div variants={itemVariants} className="space-y-2">
-                    <div className="flex justify-between">
-                      <span className={`${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>Node.js</span>
-                      <span className={`${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>90%</span>
-                    </div>
-                    <SkillBar value={90} color="#68a063" />
-                  </motion.div>
-                  <motion.div variants={itemVariants} className="space-y-2">
-                    <div className="flex justify-between">
-                      <span className={`${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>Python</span>
-                      <span className={`${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>80%</span>
-                    </div>
-                    <SkillBar value={80} color="#3572A5" />
-                  </motion.div>
+                  {backendSkills.map(skill => (
+                    <motion.div key={skill.name} variants={itemVariants} className="space-y-2">
+                      <div className="flex justify-between">
+                        <span className={`${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>{skill.name}</span>
+                        <span className={`${theme === 'dark' ? 'text-background' : 'text-foreground'}`}>{skill.value}%</span>
+                      </div>
+                      <SkillBar value={skill.value} color={skill.color} />
+                    </motion.div>
+                  ))}
                 </div>
               </motion.div>
 
@@ -167,18 +172,22 @@ const SkillSection: React.FC = () => {
               <motion.div variants={itemVariants}>
                 <h4 className="text-lg font-medium mb-4">Tools & Technologies</h4>
                 <motion.div variants={itemVariants} className="flex flex-wrap gap-2">
-                  <Badge variant="secondary" className="bg-[#333] text-white px-3 py-1">Git</Badge>
-                  <Badge variant="secondary" className="bg-[#2496ED] text-white px-3 py-1">Docker</Badge>
-                  <Badge variant="secondary" className="bg-[#FF9900] text-white px-3 py-1">AWS</Badge>
-                  <Badge variant="secondary" className="bg-[#326CE5] text-white px-3 py-1">Kubernetes</Badge>
-                  <Badge variant="secondary" className="bg-[#D24939] text-white px-3 py-1">Jenkins</Badge>
+                  {toolsTechnologies.map(tool => (
+                    <Badge
+                      key={tool.name}
+                      variant="secondary"
+                      className={`${themeRevert === 'dark' ? 'text-background' : 'text-foreground'}`}
+                    >
+                      {tool.name}
+                    </Badge>
+                  ))}
                 </motion.div>
               </motion.div>
-              
             </motion.div>
           </motion.div>
         </div>
-        <SkillsMarquee items={skills} theme={themeRevert} direction='left' />
+
+        <SkillsMarquee items={skills} theme={themeRevert} direction="left" />
       </motion.div>
     </>
   );
