@@ -2,6 +2,7 @@ import React from 'react'
 import FloatingDecorativeCircle from '../FloatingDecorativeCircle'
 import { Button } from '../ui/button'
 import { Link } from 'react-router-dom'
+import { HoverAnimatedAvatar } from '../HoverAnimatedAvatar'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import ProfileStats from '../ProfileStats'
 import ParticlesBackground from '../ParticlesBackground'
@@ -17,9 +18,9 @@ function Home() {
 
   return (
     <>
-    {!isSmallDevice && (
-        <FloatingDecorativeCircle className="absolute top-24 left-10 w-24 h-24 border-r" />
-    )}
+      {!isSmallDevice && (
+        <FloatingDecorativeCircle className="absolute bottom-24 right-10 w-48 h-48 border-t" />
+      )}
       
       {!isSmallDevice && (
         <ParticlesBackground 
@@ -71,21 +72,16 @@ function Home() {
 
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="order-1 md:order-2 flex justify-center"
         >
-          <Avatar className="w-64 lg:w-80 h-64 lg:h-80 border-4 border-primary/20">
-            <AvatarImage
-              src="/lovable-uploads/jerry-768.avif"
-              srcSet="/lovable-uploads/jerry-512.avif 512w, /lovable-uploads/jerry-768.avif 768w, /lovable-uploads/jerry-1024.avif 1024w"
-              sizes="(max-width: 640px) 512px, (max-width: 1024px) 768px, 1024px"
-              alt="John Anderson"
-              fetchPriority="high"
-              className="object-cover"
-            />
-            <AvatarFallback>JA</AvatarFallback>
-          </Avatar>
+          <HoverAnimatedAvatar hoverImageSrc="/lovable-uploads/touqeer1.avif" hoverImageAlt="Overlay">
+            <Avatar className="w-64 lg:w-80 h-64 lg:h-80 border-4 border-primary/20">
+              <AvatarImage src="/lovable-uploads/jareer1.avif" alt="John Anderson" fetchPriority='high' className='object-cover' />
+              <AvatarFallback>JA</AvatarFallback>
+            </Avatar>
+          </HoverAnimatedAvatar>
         </motion.div>
       </div>
 
