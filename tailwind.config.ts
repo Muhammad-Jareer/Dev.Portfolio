@@ -61,8 +61,8 @@ export default {
         "2xl": "1rem",
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        heading: ["Outfit", "sans-serif"],
+        sans: ["sans-serif"],
+        heading: ["sans-serif"],
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
