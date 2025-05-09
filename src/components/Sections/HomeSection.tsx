@@ -17,7 +17,7 @@ function Home() {
   return (
     <>
       {!isSmallDevice && (
-        <FloatingDecorativeCircle className="absolute bottom-24 right-10 w-48 h-48 border-t" />
+        <FloatingDecorativeCircle className="absolute top-24 left-10 w-48 h-48 border-b" />
       )}
       
       {!isSmallDevice && (
