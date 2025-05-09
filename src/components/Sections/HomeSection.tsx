@@ -1,8 +1,6 @@
-import React from 'react'
 import FloatingDecorativeCircle from '../FloatingDecorativeCircle'
 import { Button } from '../ui/button'
 import { Link } from 'react-router-dom'
-import { HoverAnimatedAvatar } from '../HoverAnimatedAvatar'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import ProfileStats from '../ProfileStats'
 import ParticlesBackground from '../ParticlesBackground'
@@ -76,12 +74,10 @@ function Home() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="order-1 md:order-2 flex justify-center"
         >
-          <HoverAnimatedAvatar hoverImageSrc="/lovable-uploads/touqeer1.avif" hoverImageAlt="Overlay">
             <Avatar className="w-64 lg:w-80 h-64 lg:h-80 border-4 border-primary/20">
               <AvatarImage src="/lovable-uploads/jareer1.avif" alt="John Anderson" fetchPriority='high' className='object-cover' />
               <AvatarFallback>JA</AvatarFallback>
             </Avatar>
-          </HoverAnimatedAvatar>
         </motion.div>
       </div>
 
