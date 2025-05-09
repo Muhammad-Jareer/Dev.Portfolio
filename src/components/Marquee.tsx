@@ -1,4 +1,3 @@
-// components/MarqueeSection.tsx
 import Marquee from "react-fast-marquee";
 import { ReactElement } from "react";
 

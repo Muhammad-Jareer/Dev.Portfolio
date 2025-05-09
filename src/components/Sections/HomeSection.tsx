@@ -75,7 +75,7 @@ function Home() {
           className="order-1 md:order-2 flex justify-center"
         >
             <Avatar className="w-64 lg:w-80 h-64 lg:h-80 border-4 border-primary/20">
-              <AvatarImage src="/lovable-uploads/jareer1.avif" alt="John Anderson" fetchPriority='high' className='object-cover' />
+              <AvatarImage src="/lovable-uploads/jareer1.avif" alt="John Anderson" className='object-cover' />
               <AvatarFallback>JA</AvatarFallback>
             </Avatar>
         </motion.div>
