@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/use-theme";
@@ -5,7 +6,7 @@ import { FaSun, FaMoon, FaDownload } from 'react-icons/fa';
 import { HiMenu } from 'react-icons/hi';
 
 import * as Dialog from "@radix-ui/react-dialog";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 import {
   NavigationMenu,
@@ -17,9 +18,18 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import React from "react";
 
-const MainNavbar = () => {
+// Desktop submenu items
+const desktopMenu = [
+  { to: "/skills", title: "Skills", description: "Technical and soft skills overview" },
+  { to: "/experience", title: "Experience", description: "Professional work experience" },
+  { to: "/education", title: "Education", description: "Academic qualifications" },
+  { to: "/certifications", title: "Certifications", description: "Professional certifications" },
+  { to: "/achievements", title: "Achievements", description: "Key accomplishments" },
+  { to: "/languages", title: "Languages", description: "Language proficiency" },
+];
+
+export default function MainNavbar() {
   const { theme, toggleTheme } = useTheme();
 
   return (
@@ -33,13 +43,47 @@ const MainNavbar = () => {
         {/* DESKTOP NAV */}
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList>
-            {/* ...your existing desktop items here */}
+            {/* ... desktop items ... */}
+            <NavigationMenuItem>
+              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                <Link to="/">Profile</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                <Link to="/projects">Projects</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Skills & Experience</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid gap-3 p-4 w-[400px] md:w-[500px] lg:w-[600px] grid-cols-2">
+                  {desktopMenu.map(item => (
+                    <ListItem key={item.to} to={item.to} title={item.title}>
+                      {item.description}
+                    </ListItem>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>More</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid gap-3 p-4 w-[400px] md:w-[500px] lg:w-[600px] grid-cols-2">
+                  <ListItem to="/interests" title="Interests">Hobbies and interests</ListItem>
+                  <ListItem to="/testimonials" title="Testimonials">Client testimonials</ListItem>
+                  <ListItem to="/platforms" title="Working Platforms">Professional platforms profile</ListItem>
+                  <ListItem to="/contact" title="Contact">Get in touch</ListItem>
+                  <ListItem to="/lifelogs" title="Frames & Feats">Life Logs</ListItem>
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
 
-        {/* MOBILE MENU TOGGLE + THEME + DOWNLOAD */}
+        {/* MOBILE MENU + THEME + DOWNLOAD */}
         <div className="flex items-center gap-2">
-          {/* Mobile menu button */}
+          {/* Mobile Dialog */}
           <Dialog.Root>
             <Dialog.Trigger asChild>
               <Button
@@ -54,44 +98,43 @@ const MainNavbar = () => {
 
             <Dialog.Portal>
               <Dialog.Overlay className="fixed inset-0 bg-black/50" />
-              <Dialog.Content
-                asChild
-                className="fixed bottom-0 w-full origin-bottom"
-              >
-                <motion.nav
-                  initial={{ rotateX: -90, opacity: 0 }}
-                  animate={{ rotateX: 0, opacity: 1 }}
-                  exit={{ rotateX: -90, opacity: 0 }}
-                  transition={{ type: 'spring', stiffness: 300 }}
-                  className="bg-background p-6 rounded-t-2xl space-y-4 shadow-xl"
-                >
-                  {/* replicate your nav links in a vertical list */}
-                  <MobileNavLink to="/">Profile</MobileNavLink>
-                  <MobileNavLink to="/projects">Projects</MobileNavLink>
-                  <MobileNavTrigger title="Skills & Experience">
-                    <MobileNavLink to="/skills">Skills</MobileNavLink>
-                    <MobileNavLink to="/experience">Experience</MobileNavLink>
-                    <MobileNavLink to="/education">Education</MobileNavLink>
-                    <MobileNavLink to="/certifications">Certifications</MobileNavLink>
-                    <MobileNavLink to="/achievements">Achievements</MobileNavLink>
-                    <MobileNavLink to="/languages">Languages</MobileNavLink>
-                  </MobileNavTrigger>
-                  <MobileNavTrigger title="More">
-                    <MobileNavLink to="/interests">Interests</MobileNavLink>
-                    <MobileNavLink to="/testimonials">Testimonials</MobileNavLink>
-                    <MobileNavLink to="/platforms">Platforms</MobileNavLink>
-                    <MobileNavLink to="/contact">Contact</MobileNavLink>
-                    <MobileNavLink to="/lifelogs">Frames & Feats</MobileNavLink>
-                  </MobileNavTrigger>
 
-                  {/* Close button */}
-                  <Dialog.Close asChild>
-                    <Button variant="ghost" className="mt-4 w-full">
-                      Close
-                    </Button>
-                  </Dialog.Close>
-                </motion.nav>
-              </Dialog.Content>
+              <AnimatePresence>
+                <Dialog.Content asChild forceMount>
+                  <motion.nav
+                    initial={{ y: '100%', opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: '100%', opacity: 0 }}
+                    transition={{ type: 'tween', ease: 'easeInOut', duration: 0.3 }}
+                    className="fixed bottom-0 w-full bg-background p-6 rounded-t-2xl space-y-4 shadow-xl origin-bottom"
+                  >
+                    <MobileNavLink to="/">Profile</MobileNavLink>
+                    <MobileNavLink to="/projects">Projects</MobileNavLink>
+
+                    <MobileNavTrigger title="Skills & Experience">
+                      {desktopMenu.map(item => (
+                        <MobileNavLink key={item.to} to={item.to}>
+                          {item.title}
+                        </MobileNavLink>
+                      ))}
+                    </MobileNavTrigger>
+
+                    <MobileNavTrigger title="More">
+                      <MobileNavLink to="/interests">Interests</MobileNavLink>
+                      <MobileNavLink to="/testimonials">Testimonials</MobileNavLink>
+                      <MobileNavLink to="/platforms">Platforms</MobileNavLink>
+                      <MobileNavLink to="/contact">Contact</MobileNavLink>
+                      <MobileNavLink to="/lifelogs">Frames & Feats</MobileNavLink>
+                    </MobileNavTrigger>
+
+                    <Dialog.Close asChild>
+                      <Button variant="ghost" className="mt-4 w-full">
+                        Close
+                      </Button>
+                    </Dialog.Close>
+                  </motion.nav>
+                </Dialog.Content>
+              </AnimatePresence>
             </Dialog.Portal>
           </Dialog.Root>
 
@@ -115,14 +158,35 @@ const MainNavbar = () => {
       </div>
     </header>
   );
-};
+}
 
-export default MainNavbar;
+// ------------ ListItem Component (for desktop submenu) ------------
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a"> & { to: string; title: string }
+>(({ className, title, children, to, ...props }, ref) => (
+  <li>
+    <NavigationMenuLink asChild>
+      <Link
+        to={to}
+        ref={ref as any}
+        className={cn(
+          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+          className
+        )}
+        {...props}
+      >
+        <div className="text-sm font-medium leading-none">{title}</div>
+        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+          {children}
+        </p>
+      </Link>
+    </NavigationMenuLink>
+  </li>
+));
+ListItem.displayName = "ListItem";
 
-/* ------------------------------------------------ */
-/* Helper components for mobile links and triggers */
-/* ------------------------------------------------ */
-
+// ------------ Mobile Helpers ------------
 const MobileNavLink: React.FC<{ to: string; children: React.ReactNode }> = ({ to, children }) => (
   <Link
     to={to}
@@ -141,9 +205,7 @@ const MobileNavTrigger: React.FC<{ title: string; children: React.ReactNode }> =
         className="w-full flex justify-between items-center px-4 py-2 rounded-lg hover:bg-accent hover:text-accent-foreground transition"
       >
         {title}
-        <span className={cn("transform transition-transform", open && "rotate-180")}>
-          ▼
-        </span>
+        <span className={cn("transform transition-transform", open && "rotate-180")}>▼</span>
       </button>
       {open && <div className="pl-4 space-y-1">{children}</div>}
     </div>
