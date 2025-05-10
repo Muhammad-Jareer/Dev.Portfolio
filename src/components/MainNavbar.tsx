@@ -81,6 +81,9 @@ const MainNavbar = () => {
                   <ListItem to="/contact" title="Contact">
                     Get in touch
                   </ListItem>
+                  <ListItem to="/lifelogs" title="Frames & Feats">
+                    Life Logs
+                  </ListItem>
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>

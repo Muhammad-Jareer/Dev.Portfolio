@@ -15,6 +15,7 @@ import Testimonials from "./pages/Testimonials";
 import Platforms from "./pages/Platforms";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import LifeLogs from "./pages/LifeLogs";
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const AppWithLocation = () => {
       '/achievements',
       '/interests',
       '/testimonials',
+      '/lifelogs',
     ];
   
     if (scrollPaths.includes(location.pathname)) {
@@ -61,6 +63,7 @@ const AppWithLocation = () => {
         <Route path="/languages" element={<Languages />} />
         <Route path="/testimonials" element={<Testimonials />} />
         <Route path="/platforms" element={<Platforms />} />
+        <Route path="/lifelogs" element={<LifeLogs />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

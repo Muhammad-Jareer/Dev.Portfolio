@@ -29,7 +29,7 @@ const TabFilter: React.FC<TabFilterProps> = ({
             <TabsTrigger 
               key={tab.id} 
               value={tab.id}
-              className="px-4 md:px-8"
+              className="px-3 md:px-8"
             >
               <motion.span
                 whileHover={{ scale: 1.05 }}
