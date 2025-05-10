@@ -19,6 +19,7 @@ A modern, responsive portfolio website showcasing the work of **John Anderson**,
 ## Demo
 
 Live site: [https://your-domain.com](https://your-domain.com)
+LinkedIn Account: ["https://www.linkedin.com/posts/muhammad-jareer_ive-updated-my-linkedin-profile-url-activity-7326869277641216000-WI7y?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEfrBVkBRt4TpEgTOa4ikdwvAPeMCv5O8K8"]
 
 ## Features
 
